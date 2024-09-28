@@ -360,3 +360,21 @@ buttons.forEach(button =>{
    })
 })
 -------------------------------------------------
+public class Main {
+   static int plusMehtod(int x, int y){
+      return x + y;
+   }
+   static double plusMethod (double x , double y) {
+      return x + y;
+   }
+   public static void main (String[] args) {
+    
+      int myNum1 = plusMehtod(8,5);
+      double myNum2 = plusMehtod(4.3, 6.3);
+      system.out.println("int: " + myNum1)
+      system.out.println("int: " + myNum1)
+
+  } 
+}
+
+
