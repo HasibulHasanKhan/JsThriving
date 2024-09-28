@@ -1,0 +1,362 @@
+/*
+Noraml js module ecosystem a import use korte hoy.
+Node eco system a require use korte hoy 
+------------------------------------------
+Note-1: On theme we can replace deafult tailwind plugins properties . 
+
+Note-2 : On extend we add new properties in tailwind css plugins wtithout replacing or removing Tailwind default plugins.
+--------------------
+
+module.exports = {
+theme: {
+  colors: {     // change tailwind default plugins colors
+       'blue': {          
+             light-blue: "23rr245r2r",
+             dark-blue: "#4ohifidshagf",
+             DEFAULT: "#dgj;gj"
+      },
+        'Black': "3443t5", 
+        'red': {           
+             light-red: "f#agggrqt",
+             pure-red: "#fqa;tqotg" 
+       }
+    },
+    screen: {
+         sm: "480",
+         md: "780",
+         lg: "976"
+    }
+    fontFamilly: {
+         sans: ["sans-serif", "Graphik"],
+         serif: ['Merriweather', 'serif'],
+    }     
+  } 
+     ////  Don't change Tailwind default behaviour.
+extend: {
+     screen: {
+         sm: "540",
+         md: "740"
+     
+     }  
+    spacing: {
+         '128': "32rem",
+         '144': "36rem"
+      }
+     borderRadius: {
+       "4xl": "2rem",
+     }
+
+ }
+
+}
+----------------------------------------------------------
+----------------------------------------------------------
+@tailwind base;
+@tailwind components;
+@tailwind utiliies;
+------------------------------------
+@layer base {
+ // change tailwind html element default behaviour 
+     h1 {
+         @apply text-2xl text-green-600;
+  }
+     p {
+         @apply text-lg italic font-light ordinal  leading-2 text-justify;
+     }
+}
+
+@layer components {
+.btn {
+     @apply px-4 py-1 border rounded-full text-sm  font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2;
+     @apply p-2;
+  }
+.btn-purple {
+     @apply border-purple-200 text-purple-600  hover:bg-purple-600;
+ 
+  }  
+}
+
+@layer utilities {
+   // add personal utilities on tailwind css 
+   .text-body {
+      font-size: 12px;
+   
+   }
+  
+}
+------------------------------------------
+<input type="text" id="fname" onblur = "myFuncion()">
+
+function myFuncion() {
+  // when focus get out form input the input value become uppercase . 
+  let x = document.getElementById("fname");
+  x.value = x.value.toUpperCase();
+}
+------------------------------------------------------------
+disply:grid/inline-grid;
+column-gap;
+row-gap;
+gap;
+grid-column-start: 1;
+grid-column-end: 3;
+gird-row-start: 2;
+grid-template: 80px;
+gird-template-rows: 50px 30px;
+justify-content: space-evenly/space-around/space-between
+align-content: center/space-evenly/space-around/space-between
+grid-column: 1/5;
+grid-row: 1/5;
+grid-area: 2/1/ span 2 / span 3 ;
+----------------------------------------------------------
+display: flex;
+flex-direction: column/row/column-reverse/
+flex-wrap: wrap/nowrap/row-reverse/
+flex-flow: row wrap // flex-direction/ flex-wrap/
+justify-conten: center/space-around;
+align-items: center/ flex-end/ flex-start
+--------------------------------------------------------
+** Window Even Attribute 
+- onafterprint = Srcript to be run after the document is printed.
+- onbeforeprint = Script to be run before the documents printed.
+- onload = fires after the page is finished loading
+ supported <body> , <frame>, <frameset>, <iframe>, <image>, <input type="image"> , <link>, <script>, <style>.
+ example: 
+  <img src="w.gif" onload="loadImage()" width="100"
+  height="134">
+  --------------
+  function loadImage(){
+
+     alert ("Image is Loaded)
+  }
+  ------------------------------------
+  -ononline = script to be run when the browser starts to work online.
+  - onoffline = script to be run when the browser starts to work online.
+--------------------------------------------------------
+--------------------------------------------------------
+** Form Events 
+--------------
+- onblur = Fires the moment that the element loses focus.
+  exm: <input type ="text" name="fname" id="fname" onblur= "myFunction">
+
+
+  function myFuncion(){
+      let x = document.getElementById("fname");
+      x.value = x.value.toUpperCase();
+  }
+  ----
+   <input type="text" id="myInput" onfocus="focusFunction()"
+    onblur="blurFunction()">
+
+  function focusFunction() {
+
+     document.getElementById("myInput").style.background = "yellow";
+  }  
+  function blurFunction( ){
+
+     document.getElementById("myInput").style.background = "red";
+  }
+  --------------------------------------------------------
+  --onchange = |Fires the moment when the value of the element is changed.
+  <select id="mySelect" onchange="myFuncion()">
+   <option value="Audi"> Audi
+   <optin value = "BMW"> BMW
+   <option value="Volvo">Volvo
+ </select>
+ -------------------------
+ function myFuncion() {
+     let x = document.getElementById("mySelect").vlaue;
+     document.getElementById("value").innerHTML = " You selected" + x;
+ }  
+ --------------------------------------------------
+ onchange=myFuncion("this.value")
+ functionm myFuncion(value){
+     alert(The input value has changed. The new value is : + value)
+ }
+-------------------------------------------------
+<input type ="text" id= "iname" onfoucus=myFuncion(this.id);
+-----------------------------------------------------
+-- oninvalid = The oninvalid event occurs when a submitted <input> element is invalid.
+--------------------------------------
+<form onreaset="myFuncion()">
+Enter name: <input type="text">
+<input type="reset">
+------------------
+function myFuncion(){
+
+   alert("The form was reset");
+
+}
+-------------------------------------------------------------
+<input type="searchA" id="myInput" onsearch="myFuncion()">
+
+function myFuncion(){
+
+   let x = document.getElementById("myInput");
+   document.getElementById("demo").innerHTML = "You are searching versions. <p>
+}
+------------------------------------------------------
+**keyboard Event 
+--------------
+1. onkeydowm
+2. onkeypress
+3. onkeyup
+------------------------------
+<input type = "text" id="demo" 
+onkeydowm="keydownFunction()" onkeyup="keyupFunction()">
+
+function keydownFunction(){
+   document.getElementById("demo").style.background()">
+
+}
+function keyupFunction(){
+   document.getElementById("demo").style.backgroundColor = "green";
+}
+--------------------------------------
+** Clipboard Events-
+
+1. oncopy
+2. oncut
+3. onpaste
+-------------------------------------------------
+Mouse Events 
+---------------
+onclick 
+ondbclick
+onmousedown
+onmousemove
+onmouseout
+onmouseover
+onmouseup
+onwheel
+--------------------------------------------------
+<input type="myFuncion()" vlaue="Try " size="40">
+
+functin myFuncion(){
+   document.getElementById("demo").innerHTML = 
+   "You pasted text";
+}
+
+------------------------------------
+
+<p contentditable ="true" onpasete="myFuncion()"> Try </p>
+
+function myFunction(){
+   alert("You pasted text!")
+}
+---------------------------------
+oncut // onpaste//oncopy//
+---------------------------
+<details ontoggle="myFuncion()">
+<summary> Copyright 13343-4455</summary>
+<p> Bangladesh </p> 
+<h2> Country </h>
+</details>
+--------------------------------------------------------------
+<input id="id" type="number" min="100" max="200" required>
+<button onclick ="myFuncion()"> OK </button>
+
+-----------------------
+function myFuncion(){
+
+  const inpObj = document.getElementById("id");
+  if(!inpObj.checkValidity()){
+     document.getElementById("demo").innerHTML = inpObj.validationMessage;
+
+  }else {
+    document.getElementById("demo").innerHTML = "Input OK";
+  }
+}
+---------------------------------------------------------
+Flex:
+===flex container properties==============
+display: Flex;
+flex-direction: column/ row / row-reverse/column-reverse 
+flex-wrap: wrap/nowrap/wrap-reverse
+flex-flow: row wrap // 
+justify-conten: center/ flex-start/ space-between/space-around
+align-items: center/flex-start/
+align-conten: center/space-between
+==========flex-items properties==============
+order : 2344/3
+flex-grow: 8
+flex-shrink: 0
+flex-basis: 200px;
+flex
+align-self: center/flex-start/
+------------------------------------------------------
+grid----------------------
+-----------
+display: grid/ inline-grid
+column-gap: 50px;
+row-gap: 30px;
+gap: 20px;
+grid-column-start: 1;
+grid-column-end: 1;
+grid-row-start: 1;
+grid-row-end: 4;
+grid-template-column: auto/auto/auto/200px;
+grid-template-rows: 300px/ autp/300px;
+justify-content: space-around/space-around/space-around
+align-content: space-evenly/space-around/space-between
+grid-colimn: 1/span 5
+grid-row:1/span 5
+grid-area: 2/1/span 2/span4
+gir-auto-flow: dense
+-----------------------------------
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+---------------------------------------------------------------
+grid-template-columns: repeat(auto-fit, minmaz(200, 1fr));
+---------------------------------------------------------------
+const ulElement = document.querySelectorAll("ul");
+
+ulElement.forEach(ulElemen => {
+   const firstChild = ulElement.firstChild;
+   firstChild.style.backgroundColor = green;
+})
+> lastElementChild
+> nextelementChild
+> previousElementSibling
+> parenElement
+> children
+----------------------------------------------------
+ myBox.addEventListener("click", event = > {
+     event.target.syle.backgroundColor = "tomato";
+     event.target.textContect = "Ouch";
+ })
+---------------------------------------------
+const myButton = document.getElementById("myButton);
+myButton.classList.add("enabled");
+---------------------------------------------------
+const myButton = document.getElementById("myButton);
+
+myButton.addEventListener("mouseover", event =>{
+    event.target.classList.toggle("hover");
+})
+//-------------------------------------------
+let buttons = document.querySelectorAll(".myButton)
+ 
+buttons.forEach(button => {
+   button.classList.add("enabled);
+})
+buttons.forEach(button => {
+   button.addEventListener("mouseover", event =>{
+      event.target.classList.toggle("hover");
+   })
+})
+--------------------------------------------------------------
+buttons.forEach(button =>{
+   button.addEventListener("mouseout", event =>{
+      event.target.classList.toggle("hover");
+   })
+})
+-------------------------------------
+buttons.forEach(button =>{
+   button.addEventListener("click", event =>{
+      if(event.target.classList.contains("disabled)){
+         event.target.textContect +="ok";
+      } else {
+         event.target.classList.replace("enabled","disabled);
+      }
+   })
+})
+-------------------------------------------------
