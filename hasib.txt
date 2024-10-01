@@ -377,4 +377,12 @@ public class Main {
   } 
 }
 
+--------------------------------------------------------
+const fruits =["Banana", "Orange", "Apple",];
+const keys = fruits.keys();
 
+let text = "";
+for (let x of keys){
+   tex+= x + "<br>";
+}
+--------------------------------------
