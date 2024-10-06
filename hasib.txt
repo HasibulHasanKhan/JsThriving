@@ -432,3 +432,56 @@ for (let x of keys){
 // let text = Object.entries(person1);
 // console.log(text);
 //------------------------------
+--------------------------------------
+// Object.entries(object)
+// Returns am array of the key/value pairs of an object.
+//---------------------------------------
+// const fruits = ["Banana", "Orange", "Apples", "Mangoes"];
+// let [fruit1, fruit2] = fruits;
+// console.log(` ${fruit1} and  ${fruit2}`);
+//-----------------------------------------
+// const fruits = { Bananas: 300, Oranges: 200, Apples: 500 };
+
+// let text = "";
+// for (let [fruit, amount] of Object.entries(fruits)) {
+//   text += fruit + ":" + amount + "\n";
+// }
+// console.log(text);
+--------------------------------------------------------------
+// let {firstName, lastName, Country = "us" } = person;
+---------------------------------------------------
+// the fromEntries() method creates an object from a list of 
+key/value pairs.
+----------------------------------------
+const myObj = Object.fromEntries(fruits);
+-----------------------------------
+// Object.values() is similar to Object.entries(), but returns a single dimension array of the object values.
+// that,s mean it's only return value of Object.
+// Return array of values from object.
+//----------------------------------------
+// const person = {
+//   firstName: "Hasib",
+//   lastName: "Hasan",
+//   age: 50,
+// };
+// let text = Object.values(person);
+// console.log(text);
+// const fruits = ["Banana", "Orange", "Apple", "Mango"];
+// console.log(fruits.toString());
+// const fruits = ["Banana", "Orange", "Apple", "Mango"];
+// const keys = fruits.keys();
+// let text = "";
+// for (let x of keys) {
+//   text += x + "\n";
+// }
+// console.log(text);
+// const fruits = ["Banana", "Orange", "Apple", "Mango"];
+// const f = fruits.entries();
+
+// for (let x of f) {
+//   console.log(x.toString());
+// }
+------------------------------------------------
+h2.insertAdjacentElement("afterend", span)
+h2.insertAdjacentHTML("aferend", html)
+------------------------------------------------

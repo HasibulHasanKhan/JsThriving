@@ -1,14 +1,22 @@
-// Object.entries(object)
-// Returns am array of the key/value pairs of an object.
-//---------------------------------------
-// const fruits = ["Banana", "Orange", "Apples", "Mangoes"];
-// let [fruit1, fruit2] = fruits;
-// console.log(` ${fruit1} and  ${fruit2}`);
-//-----------------------------------------
-const fruits = { Bananas: 300, Oranges: 200, Apples: 500 };
-
-let text = "";
-for (let [fruit, amount] of Object.entries(fruits)) {
-  text += fruit + ":" + amount + "\n";
+function loadPosts() {
+  fetch("https://jsonplaceholder.typicode.com/posts")
+    .then((res) => res.json())
+    .then((data) => displayPosts(data));
 }
-console.log(text);
+
+function displayPosts(posts) {
+  const container = document.getElementById("container");
+  for (const post of posts) {
+    const postDiv = document.createElement("div");
+    console.log(post);
+
+    postDiv.innerHTML = `
+       <h2> User: ${post.userId} <h2>
+       <h2> Post: ${post.title}</h2>
+       <p> Post Descripttion: ${post.body} </p>
+
+     `;
+    container.appendChild(postDiv);
+  }
+}
+loadPosts();
