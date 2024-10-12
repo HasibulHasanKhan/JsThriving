@@ -1,58 +1,77 @@
-// let numbers = [40, 100, 1, 5, 25, 10];
+const postsContainer = document.getElementById("posts");
+const postForm = document.getElementById("postForm");
 
-// numbers.sort(function (a, b) {
-//   return a - b;
-// });
-// console.log(numbers);
-// let words = ["apple", "banana", "mango", "cherry"];
+let posts = [];
 
-// words.sort(function (a, b) {
-//   return a.length - b.length;
-// });
-// console.log(words);
-//----------------------------------------
-// class Animal {
-//   constructor(name) {
-//     this.name = name;
-//   }
-//   speak() {
-//     console.log(`${this.name} makes a sound`);
-//   }
-// }
+// Function to render posts
+function renderPosts() {
+  postsContainer.innerHTML = "";
+  posts.forEach((post, index) => {
+    const postDiv = document.createElement("div");
+    postDiv.classList.add("post");
 
-// class Dog extends Animal {
-//   constructor(name, bread) {
-//     super(name);
-//     this.bread = bread;
-//   }
-//   showBread() {
-//     console.log(`${this.name} is a ${this.bread}`);
-//   }
-// }
+    postDiv.innerHTML = `
+            <h3>${post.title}</h3>
+            <p>${post.content}</p>
+            <div class="comments">
+                <h4>Comments:</h4>
+                <div class="comments-list" id="comments-${index}"></div>
+                <form class="comment-form" id="commentForm-${index}">
+                    <input type="text" placeholder="Add a comment" required>
+                    <button type="submit">Comment</button>
+                </form>
+            </div>
+        `;
 
-// let dog = new Dog("Buddy", "Golden");
-// dog.speak();
-// dog.showBread();
-///------------------------------------------------
-class BankAccount {
-  #balance = 0;
-  deposit(amount) {
-    this.#balance += amount;
-  }
-  withdraw(amount) {
-    if (amount > this.#balance) {
-      console.log("Insufficient funds");
-    } else {
-      this.#balance -= amount;
-    }
-  }
-  getBalance() {
-    return this.#balance;
-  }
+    // Add comment functionality
+    const commentForm = postDiv.querySelector(`#commentForm-${index}`);
+    commentForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const commentInput = commentForm.querySelector("input");
+      addComment(index, commentInput.value);
+      commentInput.value = ""; // Clear the input field
+    });
+
+    // Append comments
+    post.comments.forEach((comment) => {
+      addCommentToPost(index, comment);
+    });
+
+    postsContainer.appendChild(postDiv);
+  });
 }
 
-let account = new BankAccount();
-account.deposit(100);
-console.log(account.getBalance());
-account.withdraw(20);
-console.log(account.getBalance());
+// Function to add a new post
+postForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const title = document.getElementById("postTitle").value;
+  const content = document.getElementById("postContent").value;
+
+  const newPost = {
+    title,
+    content,
+    comments: [],
+  };
+
+  posts.push(newPost);
+  renderPosts();
+  postForm.reset(); // Clear form inputs
+});
+
+// Function to add a comment
+function addComment(postIndex, comment) {
+  posts[postIndex].comments.push(comment);
+  addCommentToPost(postIndex, comment);
+}
+
+// Function to display a comment under the post
+function addCommentToPost(postIndex, comment) {
+  const commentsList = document.getElementById(`comments-${postIndex}`);
+  const commentDiv = document.createElement("div");
+  commentDiv.classList.add("comment");
+  commentDiv.textContent = comment;
+  commentsList.appendChild(commentDiv);
+}
+
+// Initial render
+renderPosts();

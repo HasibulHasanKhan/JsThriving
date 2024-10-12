@@ -17,5 +17,6 @@ function displayPosts(posts) {
 
      `;
     container.appendChild(postDiv);
+    // postDiv.classList.add("random");
   }
 }
