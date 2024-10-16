@@ -57,24 +57,69 @@
 // account.withdraw(20);
 // console.log(account.getBalance());
 
-class Person {
-  constructor(age) {
-    this._age = age;
+// class Person {
+//   constructor(age) {
+//     this._age = age;
+//   }
+//   get age() {
+//     return this._age;
+//   }
+//   set age(value) {
+//     if (typeof value === "number" && value > 0 && value < 120) {
+//       this._age = value;
+//     } else {
+//       console.log("Invalid age. Age must be number between 1 and 120");
+//     }
+//   }
+// }
+
+// const person = new Person(25);
+// console.log(person.age);
+// person.age = -54;
+
+// console.log(person.age);
+// class DataFetcher {
+//   constructor() {
+//     this._data = null; // Initially no data
+//   }
+
+//   // Lazy-loaded getter for data
+//   get data() {
+//     if (this._data === null) {
+//       console.log("Fetching data...");
+//       this._data = this.fetchData(); // Simulating fetching data
+//     }
+//     return this._data;
+//   }
+
+//   fetchData() {
+//     // Simulate data fetching
+//     return { value: "Some data from API" };
+//   }
+// }
+
+// const fetcher = new DataFetcher();
+
+// console.log(fetcher.data); // Output: Fetching data... { value: 'Some data from API' }
+// console.log(fetcher.data); // Output: { value: 'Some data from API' } (cached, no fetch)
+class BankAccount {
+  #balance;
+  constructor(initilaBalance) {
+    this.#balance = initilaBalance;
   }
-  get age() {
-    return this._age;
+  get balance() {
+    return this.#balance;
   }
-  set age(value) {
-    if (typeof value === "number" && value > 0 && value < 120) {
-      this._age = value;
+
+  set balance(newBalance) {
+    if (newBalance >= 0) {
+      this.#balance = newBalance;
     } else {
-      console.log("Invalid age. Age must be number between 1 and 120");
+      console.log("Balance cannot be negative");
     }
   }
 }
-
-const person = new Person(25);
-console.log(person.age);
-person.age = -54;
-
-console.log(person.age);
+const account = new BankAccount(1000);
+console.log(account.balance);
+account.balance = 200;
+console.log(account.balance);
