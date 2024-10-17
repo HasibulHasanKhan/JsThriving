@@ -102,24 +102,30 @@
 
 // console.log(fetcher.data); // Output: Fetching data... { value: 'Some data from API' }
 // console.log(fetcher.data); // Output: { value: 'Some data from API' } (cached, no fetch)
-class BankAccount {
-  #balance;
-  constructor(initilaBalance) {
-    this.#balance = initilaBalance;
-  }
-  get balance() {
-    return this.#balance;
-  }
+// class BankAccount {
+//   #balance;
+//   constructor(initilaBalance) {
+//     this.#balance = initilaBalance;
+//   }
+//   get balance() {
+//     return this.#balance;
+//   }
 
-  set balance(newBalance) {
-    if (newBalance >= 0) {
-      this.#balance = newBalance;
-    } else {
-      console.log("Balance cannot be negative");
-    }
-  }
-}
-const account = new BankAccount(1000);
-console.log(account.balance);
-account.balance = 200;
-console.log(account.balance);
+//   set balance(newBalance) {
+//     if (newBalance >= 0) {
+//       this.#balance = newBalance;
+//     } else {
+//       console.log("Balance cannot be negative");
+//     }
+//   }
+// }
+// const account = new BankAccount(1000);
+// console.log(account.balance);
+// account.balance = 200;
+// console.log(account.balance);
+//for(pre-test loop can control initializaion and increment and incremint)
+// while(Loop until condition is false)
+// do....while(run loop at least once, then check condition)
+//for...in(Iterate over object properties with key)
+//for...of(Iterate over values in iterable objects (arrays, strings))
+//forEach(Execute a function for every array element)
